@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Assets.Sample02Serialize
 {
+    [DefaultExecutionOrder(-10)]
     public class Behaviour1 : MonoBehaviour
     {
         public Text Text;
@@ -14,6 +15,8 @@ namespace Assets.Sample02Serialize
 
         void Start()
         {
+            Debug.Log($"{Time.frameCount}frame : {nameof(Behaviour1)} Start");
+
             Text.rectTransform.sizeDelta = new Vector2(300, 500);
 
             _instantiated = Instantiate(MyPrefab);
@@ -34,6 +37,12 @@ namespace Assets.Sample02Serialize
                 + "MyScriptableObject " + MyScriptableObject.AllGetText() + "\n"
                 + "\n"
                 + "S1" + "\n" + S1.GetText();
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Instantiate(MyPrefab);
+                Debug.Log($"{Time.frameCount}frame : {nameof(MyBehaviour)} Instantiated");
+            }
         }
     }
 }

@@ -7,6 +7,26 @@ namespace Assets.Sample02Serialize
         public S1 S1_public;
         private S1 _s1_private;
 
+        void Awake()
+        {
+            Debug.Log($"{Time.frameCount}frame : {nameof(MyBehaviour)} Awake");
+        }
+
+        void Start()
+        {
+            Debug.Log($"{Time.frameCount}frame : {nameof(MyBehaviour)} Start");
+        }
+
+        private bool _isUpdated;
+        void Update()
+        {
+            if (!_isUpdated)
+            {
+                _isUpdated = true;
+                Debug.Log($"{Time.frameCount}frame : {nameof(MyBehaviour)} 1st Update");
+            }
+        }
+
         public void AllCountUp()
         {
             S1_public.CountUp();
